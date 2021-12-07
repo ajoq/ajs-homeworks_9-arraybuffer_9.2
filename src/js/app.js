@@ -4,7 +4,11 @@ export default class ArrayBufferConverter {
   }
 
   toString() {
-    const decodeBuf = new TextDecoder().decode(this.buffer);
-    return decodeBuf;
+    const decodeBuf = new Uint16Array(this.buffer);
+    let result = '';
+    decodeBuf.forEach((item) => {
+      result += String.fromCharCode(item);
+    });
+    return result;
   }
 }
